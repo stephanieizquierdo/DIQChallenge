@@ -1,6 +1,6 @@
 import React from "react"
 import { useEffect, useState, useCallback } from "react";
-import UserCard from "../Components/UserCard";
+import UserCard from "../Components/UserCard/UserCard";
 import getUsers from "../Services/usersService";
 import { Container, Grid, CircularProgress} from '@mui/material';
 
