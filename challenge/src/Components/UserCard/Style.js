@@ -5,7 +5,7 @@ export function randomColor(){
 
 
 export const Styles={
-    icon: { color: "#319795"},
+    icon: { color: "#4299E1"},
     link: {
         marginLeft: 10,
         textDecoration: "none",
@@ -22,7 +22,6 @@ export const Styles={
     cardInfoContainer:{
         display: "flex",
         flexDirection:"row",
-        alignItems:"center",
         marginTop:10
     },
     cardInfo:{

@@ -47,7 +47,6 @@ function renderCompany(company){
 }
 
 function UserCard({user}) {
-    console.log(user)
     return(
         <Card sx={Styles.cardContainer}>
             <CardHeader
