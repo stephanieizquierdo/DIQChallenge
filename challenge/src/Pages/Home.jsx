@@ -3,6 +3,8 @@ import { useEffect, useState, useCallback } from "react";
 import UserCard from "../Components/UserCard/UserCard";
 import getUsers from "../Services/usersService";
 import { Container, Grid, CircularProgress} from '@mui/material';
+import SearchBar from "../Components/SearchBar/SearchBar";
+import { Styles } from "./Styles";
 
 const Home = () => {
     const [users, setUsers] = useState([]);
@@ -18,9 +20,7 @@ const Home = () => {
     }, [fetchData]);
 
     return (
-        <Container style={{margin: "5%"}}>
-            <h2 style={{textAlign:"center"}}> Users </h2>
-
+        <Container  style={Styles.mainContainer}>
             {isLoading?
                 <CircularProgress 
                     style={{
@@ -33,20 +33,26 @@ const Home = () => {
                     }}
                 />
                 :
-                <Grid
-                    container
-                    spacing={5}
-                    style={{justifyContent: "center"}}
-                >
-                {users?.map( (usuario, index) => {
-                        return(
-                            <Grid item key={index}>
-                                <UserCard key={index} user={usuario}/>
-                            </Grid>
-                        );
-                    })
-                }
-                </Grid>
+                <div>
+                    <div style={Styles.searchBarHeader}>
+                        <SearchBar></SearchBar>
+                    </div>
+                    <Grid
+                        container
+                        spacing={5}
+                        style={{justifyContent: "center"}}
+                    >
+                    {users?.map( (usuario, index) => {
+                            return(
+                                <Grid item key={index}>
+                                    <UserCard key={index} user={usuario}/>
+                                </Grid>
+                            );
+                        })
+                    }
+                    </Grid>
+                </div>
+                
             }
         </Container>
 
