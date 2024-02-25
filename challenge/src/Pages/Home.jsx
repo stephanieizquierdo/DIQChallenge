@@ -6,7 +6,7 @@ import { Container, Grid, CircularProgress} from '@mui/material';
 import SearchBar from "../Components/SearchBar/SearchBar";
 import { Styles } from "./Styles";
 import { filterUsers } from "../Presenters/SearchBarPresenter/SearchBarPresenter";
-
+import NoResults from "../Components/SearchBar/NoResults";
 
 const Home = () => {
     const [users, setUsers] = useState([]);
@@ -32,7 +32,7 @@ const Home = () => {
     }, [searchQuery, users])
 
     return (
-        <Container  style={Styles.mainContainer}>
+        <Container style={Styles.mainContainer}>
             {isLoading?
                 <CircularProgress 
                     style={Styles.circularProgress}
@@ -42,17 +42,22 @@ const Home = () => {
                     <div style={Styles.searchBarHeader}>
                         <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
                     </div>
-                    <Grid
-                        container
-                        spacing={5}
-                        style={Styles.gridCards}
-                    >
-                        {filteredUsers.map((usuario, index) => (
+                    {filteredUsers.length?
+                        <Grid
+                            container
+                            spacing={5}
+                            style={Styles.gridCards}
+                        >
+                            {filteredUsers.map((usuario, index) => (
                                 <Grid item key={index}>
                                     <UserCard key={index} user={usuario}/>
                                 </Grid>
-                            ))}
-                    </Grid>
+                                ))
+                            }
+                        </Grid>
+                        :
+                        <NoResults/>
+                    }
                 </div>
                 
             }

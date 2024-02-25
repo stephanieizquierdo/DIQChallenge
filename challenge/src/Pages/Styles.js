@@ -10,7 +10,7 @@ export const Styles={
         display: "flex",
         justifyContent: "center"
     },
-    gridCards:{justifyContent: "center"},
+    gridCards:{justifyContent: "center", alignItems:"center"},
     circularProgress:{
         display: 'flex',
         alignItems: 'center',
