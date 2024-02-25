@@ -1,5 +1,5 @@
 import React from "react"
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useContext } from "react";
 import UserCard from "../Components/UserCard/UserCard";
 import getUsers from "../Services/usersService";
 import { Container, Grid, CircularProgress} from '@mui/material';
@@ -7,13 +7,17 @@ import SearchBar from "../Components/SearchBar/SearchBar";
 import { Styles } from "./Styles";
 import { filterUsers } from "../Presenters/SearchBarPresenter/SearchBarPresenter";
 import NoResults from "../Components/SearchBar/NoResults";
+import { DarkModeContext } from "../Providers/DarkModeProvider";
+import DarkModeSwitcher from "../Components/DarkModeSwitcher/DarkModeSwitcher";
 
 const Home = () => {
+    const {darkMode} = useContext(DarkModeContext);
     const [users, setUsers] = useState([]);
     const [isLoading, setLoading] = useState(true)
     
     const [filteredUsers, setfilteredUsers] = useState([])
     const [searchQuery, setSearchQuery] = useState('');
+    const styles = Styles(darkMode)
 
     const fetchData = useCallback(async()=> {
         const data = await getUsers();
@@ -32,25 +36,26 @@ const Home = () => {
     }, [searchQuery, users])
 
     return (
-        <Container style={Styles.mainContainer}>
+        <Container style={styles.mainContainer}>
+            <DarkModeSwitcher/>
             {isLoading?
                 <CircularProgress 
-                    style={Styles.circularProgress}
+                    style={styles.circularProgress}
                 />
                 :
                 <div>
-                    <div style={Styles.searchBarHeader}>
-                        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+                    <div style={styles.searchBarHeader}>
+                        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
                     </div>
                     {filteredUsers.length?
                         <Grid
                             container
                             spacing={5}
-                            style={Styles.gridCards}
+                            style={styles.gridCards}
                         >
                             {filteredUsers.map((usuario, index) => (
                                 <Grid item key={index}>
-                                    <UserCard key={index} user={usuario}/>
+                                    <UserCard key={index} user={usuario} theme={darkMode}/>
                                 </Grid>
                                 ))
                             }

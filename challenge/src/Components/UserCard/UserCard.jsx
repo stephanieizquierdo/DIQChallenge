@@ -8,47 +8,48 @@ import CardContent from '@mui/material/CardContent';
 import Avatar from '@mui/material/Avatar';
 import { Styles, randomColor } from './Style';
 
-function renderEmail(email){
+function renderEmail(email, style){
     return (
-        <div style={Styles.cardInfoContainer}>
-            <EmailIcon sx={Styles.icon} />
-            <a style={Styles.link} href={"mailto:"+ email}>{email}</a>
+        <div style={style.cardInfoContainer}>
+            <EmailIcon sx={style.icon} />
+            <a style={style.link} href={"mailto:"+ email}>{email}</a>
         </div>
     )
 }
 
-function renderPhone(phone){
+function renderPhone(phone, style){
     return (
-        <div style={Styles.cardInfoContainer}>
-            <CallIcon sx={Styles.icon} />
-            <a style={Styles.link} href={"tel:" + phone}> {phone} </a>
+        <div style={style.cardInfoContainer}>
+            <CallIcon sx={style.icon} />
+            <a style={style.link} href={"tel:" + phone}> {phone} </a>
         </div>
     )
 }
 
-function renderAddress(address){
+function renderAddress(address, style){
     return (
-        <div style={Styles.cardInfoContainer}>
-            <PlaceIcon sx={Styles.icon} />
-            <a style={Styles.link} target="_blank" href={"https://maps.google.com/?q="+address.geo.lat+ ", "+address.geo.lng } rel="noreferrer" > {address.city} </a>
+        <div style={style.cardInfoContainer}>
+            <PlaceIcon sx={style.icon} />
+            <a style={style.link} target="_blank" href={"https://maps.google.com/?q="+address.geo.lat+ ", "+address.geo.lng } rel="noreferrer" > {address.city} </a>
         </div>
     )
 }
 
-function renderCompany(company){
+function renderCompany(company, style){
     return (
-        <div style={Styles.cardInfoContainer}>
+        <div style={style.cardInfoContainer}>
             <span title='Company'>
-                <BusinessIcon sx={Styles.icon}/>
+                <BusinessIcon sx={style.icon}/>
             </span>
-            <p style={Styles.cardInfo}>{company}</p>
+            <p style={style.cardInfo}>{company}</p>
         </div>
     )
 }
 
-function UserCard({user}) {
+function UserCard({user, theme}) {
+    const style = Styles(theme)
     return(
-        <Card sx={Styles.cardContainer}>
+        <Card sx={style.cardContainer}>
             <CardHeader
                 avatar={
                     <Avatar sx={randomColor(user.username)} aria-label="recipe">
@@ -57,13 +58,14 @@ function UserCard({user}) {
                 }
                 title={user.name}
                 subheader={user.username}
-                sx={Styles.cardHeader}
+                subheaderTypographyProps={style.subHeader}
+                sx={style.cardHeader}
             />
             <CardContent>
-                {renderEmail(user.email)}
-                {renderPhone(user.phone)}
-                {renderAddress(user.address)}
-                {renderCompany(user.company.name)}
+                {renderEmail(user.email, style)}
+                {renderPhone(user.phone, style)}
+                {renderAddress(user.address, style)}
+                {renderCompany(user.company.name, style)}
             </CardContent>
         </Card>
     )

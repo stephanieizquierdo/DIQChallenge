@@ -1,6 +1,7 @@
-export const Styles={
+
+export const Styles = ( darkMode ) => ({
     mainContainer:{
-        background: "radial-gradient(circle, rgba(238,174,237,1) 0%, rgba(148,174,233,1) 100%)",
+        background: darkMode? "radial-gradient(circle, rgba(69,10,68,1) 0%, rgba(29,51,99,1) 100%)" : "radial-gradient(circle, rgba(238,174,237,1) 0%, rgba(148,174,233,1) 100%)",
         maxWidth:"100%",
         paddingBottom:50,
         minHeight: "100vh",
@@ -20,4 +21,4 @@ export const Styles={
         margin: 'auto',
         width: '10vw'
     },
-}
+})

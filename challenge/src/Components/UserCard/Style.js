@@ -14,20 +14,24 @@ export function randomColor(string){
 }
 
 
-export const Styles={
-    icon: { color: "#4299E1"},
+export const Styles = ( darkMode ) => ({
+    icon: { color: darkMode? "#776aa7" : "#4299E1"},
     link: {
         marginLeft: 10,
         textDecoration: "none",
-        color: "#4B5468"
+        color: darkMode? "#d4d4d4": "#4B5468"
     },
     contentText: {
         marginLeft: 10,
-        color: "#4B5468"
+        color: darkMode? "#d4d4d4" : "#4B5468"
     },
     cardHeader: {
         borderBottom:0.5,
         borderBottomColor: "#c3c3c3",
+        color: darkMode? "#d4d4d4": "default"
+    },
+    subHeader: {
+        color: darkMode? "#8d8d8d": "default"
     },
     cardInfoContainer:{
         display: "flex",
@@ -38,11 +42,12 @@ export const Styles={
         marginLeft: 10,
         marginTop:0,
         marginBottom:0,
-        color: "#4B5468",
+        color: darkMode? "#d4d4d4" : "#4B5468",
         alignItems:"center"
     },
     cardContainer:{
         minWidth: 252,
         padding: "10px",
+        backgroundColor: darkMode ? "#161b22": "white"
     }
-}
+})
