@@ -31,7 +31,7 @@ export const Styles = ( darkMode ) => ({
         color: darkMode? "#d4d4d4": "default"
     },
     subHeader: {
-        color: darkMode? "#8d8d8d": "default"
+        color: darkMode? "#8d8d8d": "#6e6e6e"
     },
     cardInfoContainer:{
         display: "flex",
