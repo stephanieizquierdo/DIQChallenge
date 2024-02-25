@@ -1,5 +1,5 @@
-export const NoResultStyles={
-    mainConteiner:{
+export const NoResultStyles = ( darkMode ) => ({
+    mainContainer:{
         display:"flex",
         flexDirection:"column",
         justifyItems: "center",
@@ -13,11 +13,11 @@ export const NoResultStyles={
     icon:{
         width:200,
         height: 200,
-        color: "#40165e"
+        color: darkMode ? "#8382b1": "#40165e"
     },
     text:{
-        color: "#40165e",
+        color: darkMode ? "#8382b1" :"#40165e",
         paddingInline: 20,
         textAlign:"center",
     },
-}
+})
