@@ -51,7 +51,7 @@ function UserCard({user}) {
         <Card sx={Styles.cardContainer}>
             <CardHeader
                 avatar={
-                    <Avatar sx={randomColor()} aria-label="recipe">
+                    <Avatar sx={randomColor(user.username)} aria-label="recipe">
                         {user.name[0]}
                     </Avatar>
                 }
