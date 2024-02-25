@@ -9,12 +9,14 @@ export default function SearchBar({ searchQuery, setSearchQuery }) {
         <Paper
             component="form"
             sx={Styles.mainComponent}
+            onSubmit={ event => event.preventDefault() }
         >
             <InputBase
+                id="Search Users"
                 sx={Styles.inputBase}
                 placeholder="Search..."
                 value={searchQuery}
-                onChange={ event => setSearchQuery(event.target.value) }
+                onChange={ (event) => { setSearchQuery(event.target.value)} }
             />
             { searchQuery ? 
                 <IconButton type="button" sx={Styles.icon} aria-label="search" onClick={()=>{setSearchQuery("")}}>

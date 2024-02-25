@@ -12,6 +12,5 @@ export const filterUsers = (users, query) => {
     if (!query) {
         return users;
     }
-    console.log( "QUERY; " + query)
     return users.filter( (user) => (filterByName(query, user) || filterByEmail(query, user) || filterByCity(query, user)) )
 };
