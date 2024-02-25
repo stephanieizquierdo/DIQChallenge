@@ -23,7 +23,7 @@ const DarkMode = styled(Switch)((darkMode) => ({
         },
         '& + .MuiSwitch-track': {
             opacity: 1,
-            backgroundColor: darkMode ? '1c0534': "red",
+            backgroundColor: darkMode ? '1c0534': "default",
         },
         },
     },
@@ -64,6 +64,7 @@ export default function DarkModeSwitcher( ) {
         <FormControlLabel
             control={<DarkMode sx={{ m: 1 }} defaultChecked theme={darkMode} />}
             onChange={handleClick}
+            sx={{marginInline:0}}
         />
     );
 }

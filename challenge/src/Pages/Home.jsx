@@ -37,7 +37,6 @@ const Home = () => {
 
     return (
         <Container style={styles.mainContainer}>
-            <DarkModeSwitcher/>
             {isLoading?
                 <CircularProgress 
                     style={styles.circularProgress}
@@ -64,8 +63,11 @@ const Home = () => {
                         <NoResults theme={darkMode}/>
                     }
                 </div>
-                
             }
+            <div style={{ position:"fixed", bottom:0, right:0}}>
+                <DarkModeSwitcher/>
+
+            </div>
         </Container>
 
         );
