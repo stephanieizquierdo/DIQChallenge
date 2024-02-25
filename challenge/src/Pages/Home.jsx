@@ -5,13 +5,20 @@ import getUsers from "../Services/usersService";
 import { Container, Grid, CircularProgress} from '@mui/material';
 import SearchBar from "../Components/SearchBar/SearchBar";
 import { Styles } from "./Styles";
+import { filterUsers } from "../Presenters/SearchBarPresenter/SearchBarPresenter";
+
 
 const Home = () => {
     const [users, setUsers] = useState([]);
     const [isLoading, setLoading] = useState(true)
+    
+    const [filteredUsers, setfilteredUsers] = useState([])
+    const [searchQuery, setSearchQuery] = useState('');
+
     const fetchData = useCallback(async()=> {
         const data = await getUsers();
         setUsers(data)
+        setfilteredUsers(data)
     }, [])
     
     useEffect(() => {
@@ -19,37 +26,32 @@ const Home = () => {
         setLoading(false)
     }, [fetchData]);
 
+    useEffect(() =>{
+        if(!searchQuery) { setfilteredUsers(users); return }
+        setfilteredUsers(filterUsers(users, searchQuery))
+    }, [searchQuery, users])
+
     return (
         <Container  style={Styles.mainContainer}>
             {isLoading?
                 <CircularProgress 
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        height: '100vh',
-                        margin: 'auto',
-                        width: '10vw'
-                    }}
+                    style={Styles.circularProgress}
                 />
                 :
                 <div>
                     <div style={Styles.searchBarHeader}>
-                        <SearchBar></SearchBar>
+                        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
                     </div>
                     <Grid
                         container
                         spacing={5}
-                        style={{justifyContent: "center"}}
+                        style={Styles.gridCards}
                     >
-                    {users?.map( (usuario, index) => {
-                            return(
+                        {filteredUsers.map((usuario, index) => (
                                 <Grid item key={index}>
                                     <UserCard key={index} user={usuario}/>
                                 </Grid>
-                            );
-                        })
-                    }
+                            ))}
                     </Grid>
                 </div>
                 
