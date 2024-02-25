@@ -30,7 +30,7 @@ function renderAddress(address){
     return (
         <div style={Styles.cardInfoContainer}>
             <PlaceIcon sx={Styles.icon} />
-            <a style={Styles.link} href={"https://maps.google.com/?q="+address.geo.lat+ ", "+address.geo.lng }> {address.city} </a>
+            <a style={Styles.link} target="_blank" href={"https://maps.google.com/?q="+address.geo.lat+ ", "+address.geo.lng } rel="noreferrer" > {address.city} </a>
         </div>
     )
 }
