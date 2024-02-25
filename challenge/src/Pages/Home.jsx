@@ -19,11 +19,11 @@ const Home = () => {
         const data = await getUsers();
         setUsers(data)
         setfilteredUsers(data)
+        setLoading(false)
     }, [])
     
     useEffect(() => {
         fetchData()
-        setLoading(false)
     }, [fetchData]);
 
     useEffect(() =>{
