@@ -4,27 +4,28 @@ import SearchIcon from '@mui/icons-material/Search';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { Styles } from "./Style";
 
-export default function SearchBar({ searchQuery, setSearchQuery }) {
+export default function SearchBar({ searchQuery, setSearchQuery, theme }) {
+    const style = Styles(theme)
     return (
         <Paper
             component="form"
-            sx={Styles.mainComponent}
+            sx={style.mainComponent}
             onSubmit={ event => event.preventDefault() }
         >
             <InputBase
                 id="Search Users"
-                sx={Styles.inputBase}
+                sx={style.inputBase}
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={ (event) => { setSearchQuery(event.target.value)} }
             />
             { searchQuery ? 
-                <IconButton type="button" sx={Styles.icon} aria-label="search" onClick={()=>{setSearchQuery("")}}>
-                    <HighlightOffIcon />
+                <IconButton type="button" sx={style.iconButton} aria-label="search" onClick={()=>{setSearchQuery("")}}>
+                    <HighlightOffIcon sx={style.icon}  />
                 </IconButton>
                 :
-                <IconButton type="button" sx={Styles.icon} aria-label="search">
-                    <SearchIcon />
+                <IconButton type="button" sx={style.iconButton} aria-label="search">
+                    <SearchIcon sx={style.icon} />
                 </IconButton>}
         </Paper>
     );

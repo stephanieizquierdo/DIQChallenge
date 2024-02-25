@@ -45,7 +45,7 @@ const Home = () => {
                 :
                 <div>
                     <div style={styles.searchBarHeader}>
-                        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+                        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} theme={darkMode} />
                     </div>
                     {filteredUsers.length?
                         <Grid
