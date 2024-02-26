@@ -1,7 +1,7 @@
 # DIQChallenge
 
 El presente challenge consiste en hacer un llamado GET de users a la API, crear los componentes correspondientes para visualizar la información y crear un buscador que filtre a medida que se escribe. Adicionalmente se agregó links para poder enviar emails, llamar si se esta en un device movil y ver en googlemaps la address con las coordenadas correspondientes. Por ultimo se agregó la opción de tener una vista nocturna.
-Se supuso que los datos Name, username, email, phone, city y company son required con lo cual no habría usuarios sin dicha información.
+Se supuso que los datos Name, username, email, phone, city, lat, lng y company son required con lo cual no habría usuarios sin dicha información.
 
 ## Ejecución
 
